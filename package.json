@@ -1,46 +1,46 @@
 {
-	"name": "frontend-project-lvl2",
-	"version": "1.0.0",
-	"description": "",
-	"bin": {
-		"gendiff": "bin/gendiff.js"
-	},
-	"engines": {
-		"node": ">=14"
-	},
-	"main": "src/index.js",
-	"type": "module",
-	"jest": {
-		"testEnvironment": "node",
-		"transform": {}
-	},
-	"scripts": {
-		"test": "npx -n --experimental-vm-modules jest"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Bonamente/frontend-project-lvl2.git"
-	},
-	"author": "Bonamente",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Bonamente/frontend-project-lvl2/issues"
-	},
-	"homepage": "https://github.com/Bonamente/frontend-project-lvl2#readme",
-	"dependencies": {
-		"commander": "^6.1.0",
-		"lodash": "^4.17.20"
-	},
-	"devDependencies": {
-		"@jest/globals": "^26.4.2",
-		"eslint": "^7.8.1",
-		"eslint-config-airbnb-base": "^14.2.0",
-		"eslint-config-prettier": "^6.11.0",
-		"eslint-plugin-import": "^2.22.0",
-		"eslint-plugin-jest": "^24.0.0",
-		"eslint-plugin-prettier": "^3.1.4",
-		"jest": "^26.4.2",
-		"jest-cli": "^26.4.2",
-		"prettier": "^2.1.1"
-	}
+  "name": "frontend-project-lvl2",
+  "version": "1.1.0",
+  "description": "",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "main": "src/index.js",
+  "type": "module",
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
+  "scripts": {
+    "test": "npx -n --experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bonamente/frontend-project-lvl2.git"
+  },
+  "author": "Bonamente",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bonamente/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/Bonamente/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@jest/globals": "^26.4.2",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "jest-cli": "^26.4.2",
+    "prettier": "^2.1.1"
+  }
 }
