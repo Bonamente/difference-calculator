@@ -8,7 +8,7 @@
   "engines": {
     "node": ">=14"
   },
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "jest": {
     "testEnvironment": "node",
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/Bonamente/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^6.1.0",
+    "debug": "^4.1.1",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
