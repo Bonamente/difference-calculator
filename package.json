@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl2",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -30,6 +30,7 @@
   "dependencies": {
     "commander": "^6.1.0",
     "debug": "^4.1.1",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
