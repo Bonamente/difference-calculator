@@ -30,3 +30,17 @@ test('genDiff YAML', () => {
 
   expect(genDiff(filePath1, filePath2)).toBe(result);
 });
+
+test('genDiff ini', () => {
+  const filePath1 = getFixturePath('file1.ini');
+  const filePath2 = getFixturePath('file2.ini');
+
+  expect(genDiff(filePath1, filePath2)).toBe(result);
+});
+
+test('genDiff unsupported file type', () => {
+  const filePath1 = getFixturePath('file1.json');
+  const filePath2 = getFixturePath('unsupportedFile.css');
+
+  expect(() => genDiff(filePath1, filePath2)).toThrow();
+});
