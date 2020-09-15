@@ -1,4 +1,5 @@
 import path from 'path';
+import ini from 'ini';
 import yaml from 'js-yaml';
 
 const parse = (filePath, data) => {
@@ -9,8 +10,10 @@ const parse = (filePath, data) => {
       return JSON.parse(data);
     case '.yml':
       return yaml.safeLoad(data);
+    case '.ini':
+      return ini.parse(data);
     default:
-      throw new Error('This file type is not supported!');
+      throw new Error('Unsupported file type');
   }
 };
 

@@ -7,3 +7,6 @@
 
 # Comparison of flat files (YAML)
 [![asciicast](https://asciinema.org/a/359595.svg)](https://asciinema.org/a/359595)
+
+# Comparison of flat files (ini)
+[![asciicast](https://asciinema.org/a/359759.svg)](https://asciinema.org/a/359759)
