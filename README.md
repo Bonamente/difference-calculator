@@ -10,3 +10,6 @@
 
 # Comparison of flat files (ini)
 [![asciicast](https://asciinema.org/a/359759.svg)](https://asciinema.org/a/359759)
+
+# Comparison of files with nested structures
+[![asciicast](https://asciinema.org/a/360621.svg)](https://asciinema.org/a/360621)

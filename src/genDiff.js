@@ -2,6 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
+import getStylishDiff from './stylish.js';
 
 const readFile = (filePath) => {
   const fullPath = path.resolve(process.cwd(), filePath);
@@ -9,25 +10,37 @@ const readFile = (filePath) => {
   return data;
 };
 
+const getFileType = (filePath) => path.extname(filePath).slice(1);
+
+const getDiff = (data1, data2) => {
+  const keys = _.union(Object.keys(data1), Object.keys(data2)).sort();
+  const diff = keys.map((key) => {
+    if (!_.has(data1, key) && _.has(data2, key)) return { type: 'added', key, value: data2[key] };
+
+    if (_.has(data1, key) && !_.has(data2, key)) return { type: 'deleted', key, value: data1[key] };
+
+    if (data1[key] === data2[key]) return { type: 'unchanged', key, value: data1[key] };
+
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return { type: 'nested', key, children: getDiff(data1[key], data2[key]) };
+    }
+
+    return { type: 'changed', key, oldValue: data1[key], newValue: data2[key] };
+  });
+
+  return diff;
+};
+
 const genDiff = (filePath1, filePath2) => {
-  const data1 = readFile(filePath1);
-  const data2 = readFile(filePath2);
+  const fileType1 = getFileType(filePath1);
+  const fileType2 = getFileType(filePath2);
 
-  const obj1 = parse(filePath1, data1);
-  const obj2 = parse(filePath2, data2);
+  const data1 = parse(readFile(filePath1), fileType1);
+  const data2 = parse(readFile(filePath2), fileType2);
 
-  const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
+  const diff = getDiff(data1, data2);
 
-  const str = keys
-    .map((key) => {
-      if (_.has(obj1, key) && !_.has(obj2, key)) return `  - ${key}: ${obj1[key]}\n`;
-      if (!_.has(obj1, key) && _.has(obj2, key)) return `  + ${key}: ${obj2[key]}\n`;
-      if (obj1[key] === obj2[key]) return `    ${key}: ${obj1[key]}\n`;
-      return `  - ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}\n`;
-    })
-    .join('');
-
-  return `\n{\n${str}}\n`;
+  return getStylishDiff(diff);
 };
 
 export default genDiff;
