@@ -13,18 +13,15 @@ const readFile = (filePath) => {
 const getFileType = (filePath) => path.extname(filePath).slice(1);
 
 const getDiff = (data1, data2) => {
-  const keys = _.union(Object.keys(data1), Object.keys(data2)).sort();
+  const keys = _.union(_.keys(data1), _.keys(data2)).sort();
+
   const diff = keys.map((key) => {
     if (!_.has(data1, key) && _.has(data2, key)) return { type: 'added', key, value: data2[key] };
-
     if (_.has(data1, key) && !_.has(data2, key)) return { type: 'deleted', key, value: data1[key] };
-
     if (data1[key] === data2[key]) return { type: 'unchanged', key, value: data1[key] };
-
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return { type: 'nested', key, children: getDiff(data1[key], data2[key]) };
     }
-
     return { type: 'changed', key, oldValue: data1[key], newValue: data2[key] };
   });
 

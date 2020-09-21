@@ -6,7 +6,7 @@ const getNewIndent = (depth) => ' '.repeat(increasedIndent * depth + indent);
 
 const stringify = (data, depth) => {
   if (!_.isPlainObject(data)) return data;
-  const convertedData = Object.entries(data).map(
+  const convertedData = _.toPairs(data).map(
     ([key, value]) => `${getNewIndent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`
   );
   return ['{', ...convertedData, `${getNewIndent(depth)}  }`].join('\n');
@@ -16,6 +16,7 @@ const getStylishDiff = (diff) => {
   const iter = (data, depth = 0) => {
     const lines = data.map((node) => {
       const { type, key, value, oldValue, newValue, children } = node;
+
       switch (type) {
         case 'added':
           return `${getNewIndent(depth)}+ ${key}: ${stringify(value, depth)}`;

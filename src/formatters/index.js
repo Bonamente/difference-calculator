@@ -7,6 +7,8 @@ const getDiffFormat = (diff, format) => {
       return getStylishDiff(diff);
     case 'plain':
       return getPlainDiff(diff);
+    case 'json':
+      return JSON.stringify(diff);
     default:
       throw new Error(`Unsupported format: ${format}`);
   }

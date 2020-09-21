@@ -26,6 +26,7 @@ const getPlainDiff = (diff) => {
     });
     return lines.join('\n');
   };
+
   return `\n${iter(diff)}\n`;
 };
 
