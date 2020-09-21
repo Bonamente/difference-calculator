@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
-import getStylishDiff from './stylish.js';
+import getDiffFormat from './formatters/index.js';
 
 const readFile = (filePath) => {
   const fullPath = path.resolve(process.cwd(), filePath);
@@ -31,7 +31,7 @@ const getDiff = (data1, data2) => {
   return diff;
 };
 
-const genDiff = (filePath1, filePath2) => {
+const renderDiff = (filePath1, filePath2, format) => {
   const fileType1 = getFileType(filePath1);
   const fileType2 = getFileType(filePath2);
 
@@ -40,7 +40,7 @@ const genDiff = (filePath1, filePath2) => {
 
   const diff = getDiff(data1, data2);
 
-  return getStylishDiff(diff);
+  return getDiffFormat(diff, format);
 };
 
-export default genDiff;
+export default renderDiff;

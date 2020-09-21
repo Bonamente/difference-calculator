@@ -13,3 +13,6 @@
 
 # Comparison of files with nested structures
 [![asciicast](https://asciinema.org/a/360621.svg)](https://asciinema.org/a/360621)
+
+# Plain format output
+[![asciicast](https://asciinema.org/a/360840.svg)](https://asciinema.org/a/360840)
