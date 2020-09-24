@@ -24,9 +24,9 @@ let iniFilePath2;
 let unsupportedFilePath;
 
 beforeAll(() => {
-  stylish = readFile('stylish.txt');
-  plain = readFile('plain.txt');
-  json = readFile('json.txt');
+  stylish = readFile('stylishOutput.txt');
+  plain = readFile('plainOutput.txt');
+  json = readFile('jsonOutput.txt').trim();
 
   jsonFilePath1 = getFixturePath('file1.json');
   jsonFilePath2 = getFixturePath('file2.json');
