@@ -47,4 +47,4 @@ Options:
 ### Plain format output
 [![asciicast](https://asciinema.org/a/360840.svg)](https://asciinema.org/a/360840)
 ### JSON format output
-[![asciicast](https://asciinema.org/a/360929.svg)](https://asciinema.org/a/360929)
+[![asciicast](https://asciinema.org/a/361498.svg)](https://asciinema.org/a/361498)

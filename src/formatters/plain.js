@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-const checkValueType = (value) => (_.isBoolean(value) ? value : `'${value}'`);
-const getValueOutput = (value) => (_.isPlainObject(value) ? '[complex value]' : checkValueType(value));
+const convertOutputValue = (value) => (_.isString(value) ? `'${value}'` : value);
+const getValueOutput = (value) => (_.isObject(value) ? '[complex value]' : convertOutputValue(value));
 
 const getPlainDiff = (diff) => {
   const iter = (data, path = []) => {
