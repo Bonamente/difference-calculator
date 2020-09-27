@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-const indent = 2;
+const initialIndent = 2;
 const increasedIndent = 4;
-const getNewIndent = (depth) => ' '.repeat(increasedIndent * depth + indent);
+const getNewIndent = (depth) => ' '.repeat(increasedIndent * depth + initialIndent);
 
 const stringify = (data, depth) => {
   if (!_.isPlainObject(data)) return data;
@@ -16,20 +16,19 @@ const getStylishDiff = (diff) => {
   const iter = (data, depth = 0) => {
     const lines = data.map((node) => {
       const { type, key, value, oldValue, newValue, children } = node;
+      const indent = getNewIndent(depth);
 
       switch (type) {
         case 'added':
-          return `${getNewIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
+          return `${indent}+ ${key}: ${stringify(value, depth)}`;
         case 'deleted':
-          return `${getNewIndent(depth)}- ${key}: ${stringify(value, depth)}`;
+          return `${indent}- ${key}: ${stringify(value, depth)}`;
         case 'changed':
-          return `${getNewIndent(depth)}- ${key}: ${stringify(oldValue, depth)}\n${getNewIndent(
-            depth
-          )}+ ${key}: ${stringify(newValue, depth)}`;
+          return `${indent}- ${key}: ${stringify(oldValue, depth)}\n${indent}+ ${key}: ${stringify(newValue, depth)}`;
         case 'unchanged':
-          return `${getNewIndent(depth)}  ${key}: ${stringify(value, depth)}`;
+          return `${indent}  ${key}: ${stringify(value, depth)}`;
         case 'nested':
-          return `${getNewIndent(depth)}  ${key}: {\n${iter(children, depth + 1)}\n${getNewIndent(depth)}  }`;
+          return `${indent}  ${key}: {\n${iter(children, depth + 1)}\n${indent}  }`;
         default:
           throw new Error(`Invalid node type: '${type}'`);
       }
@@ -37,7 +36,7 @@ const getStylishDiff = (diff) => {
     return lines.join('\n');
   };
 
-  return `\n{\n${iter(diff)}\n}\n`;
+  return `{\n${iter(diff)}\n}`;
 };
 
 export default getStylishDiff;

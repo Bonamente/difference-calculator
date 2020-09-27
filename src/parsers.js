@@ -18,8 +18,8 @@ const parseIniFile = (data) => {
   return iter(intermediateData);
 };
 
-const parse = (data, fileType) => {
-  switch (fileType) {
+const parse = (data, dataType) => {
+  switch (dataType) {
     case 'json':
       return JSON.parse(data);
     case 'yml':
@@ -27,7 +27,7 @@ const parse = (data, fileType) => {
     case 'ini':
       return parseIniFile(data);
     default:
-      throw new Error(`Unsupported file type: ${fileType}`);
+      throw new Error(`Unsupported data type: ${dataType}`);
   }
 };
 
