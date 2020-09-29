@@ -10,7 +10,7 @@ const readFile = (filePath) => {
   return data;
 };
 
-const getFileType = (filePath) => path.extname(filePath).slice(1);
+const getDataType = (filePath) => path.extname(filePath).slice(1);
 
 const getDiff = (data1, data2) => {
   const keys = _.union(_.keys(data1), _.keys(data2)).sort();
@@ -29,11 +29,11 @@ const getDiff = (data1, data2) => {
 };
 
 const getFormattedDiff = (filePath1, filePath2, format) => {
-  const fileType1 = getFileType(filePath1);
-  const fileType2 = getFileType(filePath2);
+  const dataType1 = getDataType(filePath1);
+  const dataType2 = getDataType(filePath2);
 
-  const data1 = parse(readFile(filePath1), fileType1);
-  const data2 = parse(readFile(filePath2), fileType2);
+  const data1 = parse(readFile(filePath1), dataType1);
+  const data2 = parse(readFile(filePath2), dataType2);
 
   const diff = getDiff(data1, data2);
 

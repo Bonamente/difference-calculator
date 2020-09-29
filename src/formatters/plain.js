@@ -4,10 +4,10 @@ const convertOutputValue = (value) => (_.isString(value) ? `'${value}'` : value)
 const getValueOutput = (value) => (_.isObject(value) ? '[complex value]' : convertOutputValue(value));
 
 const getPlainDiff = (diff) => {
-  const iter = (data, pathParts = []) => {
+  const iter = (data, ancestorKeys = []) => {
     const lines = data.flatMap((node) => {
       const { type, key, value, oldValue, newValue, children } = node;
-      const path = [...pathParts, key].join('.');
+      const path = [...ancestorKeys, key].join('.');
 
       switch (type) {
         case 'added':
@@ -19,7 +19,7 @@ const getPlainDiff = (diff) => {
         case 'unchanged':
           return [];
         case 'nested':
-          return iter(children, [...pathParts, key]);
+          return iter(children, [...ancestorKeys, key]);
         default:
           throw new Error(`Invalid node type: '${type}'`);
       }
