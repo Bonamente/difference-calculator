@@ -5,7 +5,12 @@
 
 # Difference calculator 
 
-Difference calculator is a command line interface utility that determines the difference between two data structures.
+A command line interface utility that determines the difference between two data structures.
+
+## Technologies
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
+![Jest](https://img.shields.io/badge/Jest-C21325.svg?style=for-the-badge&logo=Jest&logoColor=white)
+![Asciinema](https://img.shields.io/badge/asciinema-D40000.svg?style=for-the-badge&logo=asciinema&logoColor=white)
 
 ## Utility features:
 
